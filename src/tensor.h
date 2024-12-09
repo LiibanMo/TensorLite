@@ -2,16 +2,18 @@
 #define TENSOR_H
 
 typedef struct {
-    int ndim;
-    int size;
     float* data;
     int* shape;
     int* strides;
+    int ndim;
+    int size;
 } Tensor;
 
 extern "C" {
-    Tensor* create_tensor(float* data, int* shape, const int ndim);
-    void delete_tensor(Tensor* tensor);
+    Tensor* create_tensor(float* data, int* shape, int ndim);
+    float get_item(Tensor* tensor, int* indices);
+    Tensor* add_tensor(Tensor* tensorA, Tensor* tensorB);
+    Tensor* subtract_tensor(Tensor* tensorA, Tensor* tensorB);
 }
 
 #endif
